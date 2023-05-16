@@ -23,4 +23,4 @@ for record in json_data1:
 
 The code above shows how I sorted it.
 
-To download go click <CODE> then click download zip. Both py files will be in there.
+To download go click <CODE> code then click download zip. Both py files will be in there.
