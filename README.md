@@ -22,3 +22,5 @@ for record in json_data1:
     record['Environment'] = 'Training'
 
 The code above shows how I sorted it.
+
+To download go click <CODE> then click download zip. Both py files will be in there.
