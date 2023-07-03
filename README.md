@@ -1,26 +1,24 @@
-# Excel-to-MongoDB
-
-The code inputed gives an example of how to transfer the document into mongodb.
-
-After that you can clone the databse and use the pipelines to compare databases or use python scripts which I can provide depending on what we want to accomplish and compare.
-
-client = MongoClient()
-db = client['IdentitySystems']
-collection = db['data']
-
-This is settuping up to a already known client and database called IdentitySystems and data, you can change the name to what you create.
-
-You'll have to install MongoDB compass locally to do this locally. if it's online you'll have to change theMongoClient() accordingly.
-
-df1 = pd.read_excel('C:\\Internship\\PID_1589506.xlsx', sheet_name='Training_APU_ID_27865')
-
-This just goes to the excel file and the name of the sheet you want to transfer over in the DF (Datafile 1)
-It's important that it's a variable since we want to sort by adding records so we know exactly where it's from:
-json_data1 = json.loads(df1.to_json(orient='records'))
-for record in json_data1:
-    record['Application'] = 'eClinicalWorks'
-    record['Environment'] = 'Training'
-
-The code above shows how I sorted it.
-
-To download go click <CODE> code then click download zip. Both py files will be in there.
+_____________________________________________________
+Features of the script:
+–	Imports data from an Excel file into a MongoDB collection.
+–	Updates existing records in the collection based on matching names.
+–	Adds new records to the collection.
+–	Removes records from the collection if the name is not present in the new data.
+–	Generates a report showing the total number of records, updated records, unchanged records, added names, and removed names.
+–	SOR to add in the record along with Date in commands.
+_____________________________________________________
+Commands/ how to use:
+Ensure you have Python installed on your system.
+Install the required dependencies by running “pip install pandas pymongo openpyxl”
+Save the script to a file named excel_to_mongodb.py.
+Open a command prompt or terminal and navigate to the directory where the script is saved.
+Execute the script using the following command format:
+python excel_to_mongodb.py <command> -f <filename> -d <database> -c <collection> -s <source> -dt <date> -sn <sheet_name>
+_____
+-f or --file: Specifies the path to the Excel file that you want to import or update.
+-d or --database: Specifies the name of the MongoDB database where the data will be imported or updated.
+-c or --collection: Specifies the name of the MongoDB collection where the data will be imported or updated.
+-s or --sor: Specifies the source of the data (e.g., ADP, ADPR, HR, etc.).
+-dt or --date: Specifies the date associated with the data in the format 'YYYY-MM-DD'.
+-sn or --sheet_name: Specifies the name of the Excel sheet within the file that contains the data.
+_______________________________________________________
