@@ -9,16 +9,27 @@ Features of the script:
 _____________________________________________________
 Commands/ how to use:
 Ensure you have Python installed on your system.
-Install the required dependencies by running “pip install pandas pymongo openpyxl”
-Save the script to a file named excel_to_mongodb.py.
-Open a command prompt or terminal and navigate to the directory where the script is saved.
-Execute the script using the following command format:
-python excel_to_mongodb.py <command> -f <filename> -d <database> -c <collection> -s <source> -dt <date> -sn <sheet_name>
+Install the required dependencies by running “pip install pandas pymongo”
 _____
--f or --file: Specifies the path to the Excel file that you want to import or update.
--d or --database: Specifies the name of the MongoDB database where the data will be imported or updated.
--c or --collection: Specifies the name of the MongoDB collection where the data will be imported or updated.
--s or --sor: Specifies the source of the data (e.g., ADP, ADPR, HR, etc.).
--dt or --date: Specifies the date associated with the data in the format 'YYYY-MM-DD'.
--sn or --sheet_name: Specifies the name of the Excel sheet within the file that contains the data.
-_______________________________________________________
+Commands:
+
+import - Insert new records from Excel into MongoDB
+update - Sync MongoDB records by comparing to Excel
+Arguments:
+
+-f FILE - Path to Excel file
+-d DB_NAME - MongoDB database name
+-c COLL_NAME - MongoDB collection name
+-s SOR - Value for SOR (Source of Records) field
+-dt DATE - Value for DATE field
+-sn SHEET_NAME - Name or index of sheet in Excel file
+-o FILE - Path to write update report (update only)
+import usage:
+
+Inserts all records from the Excel sheet into the specified collection
+Adds SOR and DATE fields to each inserted document
+
+EX:
+python script.py update -f newdata.xlsx -d mydb -c records -s ERP -dt 2022-02-01 -sn 'Data' -o report.txt
+
+This compares the Excel sheet 'Data' to the mydb.records collection and updates accordingly. The report is written to report.txt.
